@@ -1,0 +1,110 @@
+/* Задаваме box-sizing: border-box за всички елементи */
+* {
+  box-sizing: border-box;
+}
+
+/* Основни стилове за тялото на страницата */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Стилове за хедъра */
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+h1 {
+  font-size: 1.75em; /* 75% по-голям от 16px (приблизително 28px) */
+  margin: 0;
+}
+
+/* Контейнер за съдържанието */
+main {
+  padding: 0 2%;
+  overflow: hidden; /* Помага за почистване на float-овете */
+}
+
+/* Основни стилове за всеки раздел */
+.section {
+  background-color: #f0f0f0;
+  border: 1px solid black;
+  margin: 1%;
+  padding: 50px 10px 10px 10px; /* Отгоре има допълнително падинг, за да не се препокрива съдържанието с раздела заглавие */
+  position: relative; /* За да позиционираме абсолютния .section-title вътре в него */
+}
+
+/* Стилове за разделното заглавие – винаги позиционирано в горния десен ъгъл */
+.section-title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  border: 1px solid black;
+  font-size: 1.25em; /* 25% по-голям от основния текст (около 20px) */
+  background-color: #ccc; /* Стандартен фон, който ще бъде презаписан за отделните раздели */
+}
+
+/* Десктоп изглед (ширина 992px и нагоре): 3 раздела в един ред */
+@media (min-width: 992px) {
+  .section {
+    float: left;
+    width: 30%;         /* Всеки раздел заема приблизително една трета от реда */
+    margin: 1.66%;      /* Изчислено така, че общо да се запълни реда */
+  }
+}
+
+/* Таблет изглед (от 768px до 991px): първите 2 раздела в първи ред, третият - на нов ред */
+@media (min-width: 768px) and (max-width: 991px) {
+  .section {
+    float: left;
+    margin: 1%;
+  }
+  .section:nth-child(1),
+  .section:nth-child(2) {
+    width: 48%;
+  }
+  .section:nth-child(3) {
+    width: 98%;
+    clear: both;
+  }
+}
+
+/* Мобилен изглед (767px и по-малко): всеки раздел заема цял ред */
+@media (max-width: 767px) {
+  .section {
+    float: none;
+    width: 98%;
+    margin: 1% auto;
+    clear: both;
+  }
+}
+
+/* Индивидуални цветове за фоновете на разделите и заглавията им */
+
+/* Раздел "Chicken" */
+#section-chicken {
+  background-color: #ffeef0;
+}
+#section-chicken .section-title {
+  background-color: #ffcccc;
+}
+
+/* Раздел "Beef" */
+#section-beef {
+  background-color: #f0ffe9;
+}
+#section-beef .section-title {
+  background-color: #ccffcc;
+}
+
+/* Раздел "Sushi" */
+#section-sushi {
+  background-color: #eef0ff;
+}
+#section-sushi .section-title {
+  background-color: #ccccff;
+}
